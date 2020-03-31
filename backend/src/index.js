@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors"); //Para acesso da api
 const routes = require("./routes");
 
 const app = express();
@@ -24,7 +25,12 @@ NoSQL: MongoDB, CouchDB e etc
  * Query Builder: table('users').select('*').where()
  */
 
-app.use(express.json());
+//Exemplo do uso do cors para um dominio especifico
+// app.use(cors({
+//     origin: 'http://meuapp.com'
+// }));
 
-app.use(routes);
-app.listen(3333);
+app.use(cors());
+app.use(express.json());
+app.use(routes); //Importa as rotas
+app.listen(3333); //Porta local
