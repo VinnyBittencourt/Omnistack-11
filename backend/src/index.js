@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors"); //Para acesso da api
+const { errors } = require("celebrate");
 const routes = require("./routes");
 
 const app = express();
@@ -33,4 +34,5 @@ NoSQL: MongoDB, CouchDB e etc
 app.use(cors());
 app.use(express.json());
 app.use(routes); //Importa as rotas
+app.use(errors());
 app.listen(3333); //Porta local
