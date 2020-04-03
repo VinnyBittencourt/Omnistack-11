@@ -1,4 +1,5 @@
 const express = require("express");
+const { celebrate, Segments, Joi } = require("celebrate"); //Ctrl + espaço dá pra ver todos os componentes que podem ser utilizados dentro das { }
 
 //Puxando as controllers
 const OngController = require("./controllers/OngController");
@@ -12,7 +13,28 @@ const routes = express.Router();
 routes.post("/sessions", SessionController.create);
 
 routes.get("/ongs", OngController.index);
-routes.post("/ongs", OngController.create);
+routes.post(
+    "/ongs",
+    celebrate({
+        [Segments.BODY]: Joi.object().keys({
+            name: Joi.string()
+                .required()
+                .min(1), //as validações dos campos do body que estão sendo enviados nesta rota estão sendo feitos aqui.
+            email: Joi.string()
+                .required()
+                .email(),
+            whatsapp: Joi.string()
+                .required()
+                .min(10)
+                .max(11),
+            city: Joi.string().required(),
+            uf: Joi.string()
+                .required()
+                .length(2)
+        })
+    }),
+    OngController.create
+);
 
 routes.get("/profile", ProfileController.index);
 
