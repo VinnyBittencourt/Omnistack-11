@@ -3,7 +3,8 @@ import { Link, useHistory } from "react-router-dom"; //Link é uma outra forma d
 import { FiArrowLeft } from "react-icons/fi"; //E a forma de importar o ícone do feather-icons como component dentro do projeto. obs.: Formato svg
 
 import api from "../../services/api";
-import "./styles.css";
+// import "./styles.css";
+import { Container } from "./styles.js";
 
 import logoImg from "../../assets/logo.svg";
 
@@ -22,13 +23,13 @@ export default function NewIncident() {
         const data = {
             title,
             description,
-            value
+            value,
         };
         try {
             await api.post("incidents", data, {
                 headers: {
-                    Authorization: ongId
-                }
+                    Authorization: ongId,
+                },
             });
             history.push("/profile");
         } catch (err) {
@@ -36,7 +37,7 @@ export default function NewIncident() {
         }
     }
     return (
-        <div className='new-incident-container'>
+        <Container>
             <div className='content'>
                 <section>
                     <img src={logoImg} alt='Be the Hero' />
@@ -55,18 +56,18 @@ export default function NewIncident() {
                         type='text'
                         placeholder='Titulo do caso'
                         value={title}
-                        onChange={e => setTitle(e.target.value)}
+                        onChange={(e) => setTitle(e.target.value)}
                     />
                     <textarea
                         placeholder='Descrição'
                         value={description}
-                        onChange={e => setDescription(e.target.value)}
+                        onChange={(e) => setDescription(e.target.value)}
                     />
                     <input
                         type='text'
                         placeholder='Valor em reais'
                         value={value}
-                        onChange={e => setValue(e.target.value)}
+                        onChange={(e) => setValue(e.target.value)}
                     />
 
                     <button className='button' type='submit'>
@@ -74,6 +75,6 @@ export default function NewIncident() {
                     </button>
                 </form>
             </div>
-        </div>
+        </Container>
     );
 }

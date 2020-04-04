@@ -3,7 +3,8 @@ import { Link, useHistory } from "react-router-dom"; //Link é uma outra forma d
 import { FiLogIn } from "react-icons/fi"; //E a forma de importar o ícone do feather-icons como component dentro do projeto. obs.: Formato svg
 
 import api from "../../services/api";
-import "./styles.css";
+// import "./styles.css";
+import { Container } from "./styles.js";
 
 import heroesImg from "../../assets/heroes.png";
 import logoImg from "../../assets/logo.svg";
@@ -26,7 +27,7 @@ export default function Logon() {
         }
     }
     return (
-        <div className='logon-container'>
+        <Container>
             <section className='form'>
                 <img src={logoImg} alt='Logo' />
                 <form onSubmit={handleLogin}>
@@ -35,7 +36,7 @@ export default function Logon() {
                         type='text'
                         placeholder='Sua ID'
                         value={id}
-                        onChange={e => setId(e.target.value)}
+                        onChange={(e) => setId(e.target.value)}
                     />
                     <button className='button' type='submit'>
                         Entrar
@@ -48,6 +49,6 @@ export default function Logon() {
                 </form>
             </section>
             <img src={heroesImg} alt='Heroes' />
-        </div>
+        </Container>
     );
 }

@@ -3,7 +3,8 @@ import { Link, useHistory } from "react-router-dom"; //Link é uma outra forma d
 import { FiLogIn } from "react-icons/fi"; //E a forma de importar o ícone do feather-icons como component dentro do projeto. obs.: Formato svg
 
 import api from "../../services/api"; //Puxando a api
-import "./styles.css";
+// import "./styles.css";
+import { Container } from "./styles.js";
 
 import logoImg from "../../assets/logo.svg";
 
@@ -26,7 +27,7 @@ export default function Register() {
             email,
             whatsapp,
             city,
-            uf
+            uf,
         };
         //Try catch para o envio do objeto para a api
         try {
@@ -39,7 +40,7 @@ export default function Register() {
         }
     }
     return (
-        <div className='register-container'>
+        <Container>
             <div className='content'>
                 <section>
                     <img src={logoImg} alt='Be the Hero' />
@@ -58,19 +59,19 @@ export default function Register() {
                         type='text'
                         placeholder='Nome da ONG'
                         value={name}
-                        onChange={e => setName(e.target.value)} //pega o valor do input e seta como valor da variavel
+                        onChange={(e) => setName(e.target.value)} //pega o valor do input e seta como valor da variavel
                     />
                     <input
                         type='email'
                         placeholder='E-mail'
                         value={email}
-                        onChange={e => setEmail(e.target.value)}
+                        onChange={(e) => setEmail(e.target.value)}
                     />
                     <input
                         type='text'
                         placeholder='Whatsapp'
                         value={whatsapp}
-                        onChange={e => setWhatsapp(e.target.value)}
+                        onChange={(e) => setWhatsapp(e.target.value)}
                     />
 
                     <div className='input-group'>
@@ -78,14 +79,14 @@ export default function Register() {
                             type='text'
                             placeholder='Cidade'
                             value={city}
-                            onChange={e => setCity(e.target.value)}
+                            onChange={(e) => setCity(e.target.value)}
                         />
                         <input
                             type='text'
                             placeholder='UF'
                             style={{ width: 80 }}
                             value={uf}
-                            onChange={e => setUf(e.target.value)}
+                            onChange={(e) => setUf(e.target.value)}
                         />
                     </div>
 
@@ -94,6 +95,6 @@ export default function Register() {
                     </button>
                 </form>
             </div>
-        </div>
+        </Container>
     );
 }

@@ -4,7 +4,7 @@ import { FiPower, FiTrash2 } from "react-icons/fi";
 
 import api from "../../services/api";
 // import "./styles.css";
-import { Title } from "./styles.js";
+import { Container, Header, Ul } from "./styles.js";
 
 import logoImg from "../../assets/logo.svg";
 
@@ -44,8 +44,8 @@ export default function Profile() {
         history.push("/");
     }
     return (
-        <div className='profile-container'>
-            <header>
+        <Container>
+            <Header>
                 <img src={logoImg} alt='Be the Hero' />
                 <span>Bem vinda, {ongName}</span>
                 <Link className='button' to='/incidents/new'>
@@ -54,11 +54,11 @@ export default function Profile() {
                 <button onClick={handleLogout} type='button'>
                     <FiPower size={18} color='#e02041'></FiPower>
                 </button>
-            </header>
+            </Header>
 
             <h1>Casos cadastrados</h1>
 
-            <ul>
+            <Ul>
                 {incidents.map((incident) => (
                     <li key={incident.id}>
                         <strong>Caso:</strong>
@@ -83,7 +83,7 @@ export default function Profile() {
                         </button>
                     </li>
                 ))}
-            </ul>
-        </div>
+            </Ul>
+        </Container>
     );
 }
