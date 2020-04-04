@@ -5,7 +5,7 @@ Projeto desenvolvido durante a Omnistack 11 da Rocketseat.
 ## Comandos para funcionamento:
 
 ### Backend:
-- Npm Start
+- npm Start
 
 ### Frontend:
-- Yarn Start
+- yarn Start
