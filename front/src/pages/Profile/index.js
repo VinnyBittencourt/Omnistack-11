@@ -3,7 +3,8 @@ import { Link, useHistory } from "react-router-dom";
 import { FiPower, FiTrash2 } from "react-icons/fi";
 
 import api from "../../services/api";
-import "./styles.css";
+// import "./styles.css";
+import { Title } from "./styles.js";
 
 import logoImg from "../../assets/logo.svg";
 
@@ -16,20 +17,20 @@ export default function Profile() {
     useEffect(() => {
         api.get("profile", {
             headers: {
-                Authorization: ongId //Nessa rota é necessário saber qual usuário que está pedindo a lista de incidents. Então foi pego do localStorage o id da ong que está logada.
-            }
-        }).then(response => setIncidents(response.data));
+                Authorization: ongId, //Nessa rota é necessário saber qual usuário que está pedindo a lista de incidents. Então foi pego do localStorage o id da ong que está logada.
+            },
+        }).then((response) => setIncidents(response.data));
     }, [ongId]);
 
     async function handleDeleteIncident(id) {
         try {
             await api.delete(`incidents/${id}`, {
                 headers: {
-                    Authorization: ongId
-                }
+                    Authorization: ongId,
+                },
             });
 
-            setIncidents(incidents.filter(incident => incident.id !== id));
+            setIncidents(incidents.filter((incident) => incident.id !== id));
             /**
              * Usa o metodo de atualização do incidents pra filtrar e com isso só vai ter no array de incidents os incidentes que não forem igual ao do id que foi deletado
              */
@@ -58,7 +59,7 @@ export default function Profile() {
             <h1>Casos cadastrados</h1>
 
             <ul>
-                {incidents.map(incident => (
+                {incidents.map((incident) => (
                     <li key={incident.id}>
                         <strong>Caso:</strong>
                         <p>{incident.title}</p>
@@ -70,7 +71,7 @@ export default function Profile() {
                         <p>
                             {Intl.NumberFormat("pt-BR", {
                                 style: "currency",
-                                currency: "BRL"
+                                currency: "BRL",
                             }).format(incident.value)}
                         </p>
 
