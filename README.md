@@ -2,10 +2,10 @@
 
 Projeto desenvolvido durante a Omnistack 11 da Rocketseat.
 
-### Comandos para funcionamento:
+## Comandos para funcionamento:
 
-## Backend:
+### Backend:
 - Npm Start
 
-## Frontend:
+### Frontend:
 - Yarn Start
